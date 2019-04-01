@@ -1,0 +1,19 @@
+{
+  "name": "eserver",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ARI",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "errorhandler": "^1.5.0",
+    "express": "^4.14.0",
+    "mysql": "^2.11.1",
+    "nodemon": "^1.10.2"
+  },
+  "description": "Rest API Server"
+}
