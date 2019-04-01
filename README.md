@@ -1,2 +1,1 @@
-# eserver
-node rest api
+repo for public projects
