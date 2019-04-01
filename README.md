@@ -1,4 +1,4 @@
-# npm install
+# yarn install
 
 # add .env file as below
 // environment level configurations here
@@ -17,4 +17,4 @@ var config = {
 
 module.exports = config;
 
-# npm start
+# yarn start
