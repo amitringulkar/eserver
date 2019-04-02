@@ -13,7 +13,7 @@ function _getUsers(req, res) {
 	//res.end(JSON.stringify(customers));
 	usersModel.getUsers(function(err, result) {
 		if(err) {
-			res.end(err);
+			res.end('Failed to get users.');
 		}
 		res.end(JSON.stringify(result));
 	});
