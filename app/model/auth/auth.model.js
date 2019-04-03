@@ -104,7 +104,7 @@ function _generateJWT(data) {
 
 function _toAuthJSON(data){
     return {
-      username: data.username,
+      username: utils.getParam(data, 'username'),
       payload: _getPayload(data),
       token: _generateJWT(data)
     };
