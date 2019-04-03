@@ -1,6 +1,6 @@
 // application level configurations here
 var config = {
-    CONFIG_TOKEN_EXPIRY_MINUTE: 5
+    CONFIG_JWT_EXPIRES_IN: 1000
 };
 
 module.exports = config;

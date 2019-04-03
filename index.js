@@ -4,7 +4,7 @@ var express = require("express"),
 
 var config = require('./app/config');
 var isProduction = config.get('CONFIG_NODE_ENV') === true;
-console.log('CONFIG_NODE_ENV:', isProduction);
+console.log('Is running in production environment:', isProduction);
 var app = express();
 
 // Normal express config defaults
