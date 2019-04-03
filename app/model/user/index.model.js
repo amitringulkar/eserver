@@ -18,7 +18,7 @@ function _validateUser(user, callback) {
             return callback({'message': 'Error in db connection.', 'code': 500});
         }
 
-        var sql = 'select id, username, firstname from users where username = "' + user.getUsername() + '"';
+        var sql = 'select id, username, firstname from users where username = "' + user.getUsername() + '" AND password = "' + user.getPassword() + '"';
 
         connection.query(sql, function(err, result) {
             if(err) {
