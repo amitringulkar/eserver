@@ -15,12 +15,12 @@ function _isAuthenticated(req, res, next) {
 	}
     
 //console.log(JSON.stringify(auth));
-	plain_auth = new Buffer(auth.split(' ')[1], 'base64').toString();				
+	plain_auth = Buffer.from(auth.split(' ')[1], 'base64').toString();				
 	creds = plain_auth.split(':');      
 	username = creds[0];
 	password = creds[1];
 //res.end('_isAuthenticated:auth:' + JSON.stringify({'username': username, 'password': password}));
-    userModel.validateUser(_mapData({'username': username, 'password': password}), function(err, result){
+    userModel.validateUser(_mapData({'username': username, 'password': password}), function(err, result) {
         if(err) {
             //res.end('Authentication failed:' + err.message);
             //res.end('Authentication failed.');

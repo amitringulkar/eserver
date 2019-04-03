@@ -24,7 +24,7 @@ function _validateUser(user, callback) {
                 return callback(err);
             }
             if(utils.isEmpty(result)) {
-                return callback({'message': 'User not found.', 'code': 500}, result);
+                return callback({'message': 'Invlid User.', 'code': 500}, result);
             }
             return callback(null, result);
         });
