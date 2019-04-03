@@ -14,7 +14,8 @@
     "express": "^4.14.0",
     "jsonwebtoken": "^8.5.1",
     "mysql": "^2.11.1",
-    "nodemon": "^1.10.2"
+    "nodemon": "^1.10.2",
+    "swagger-ui-express": "^4.0.2"
   },
   "description": "Rest API Server"
 }

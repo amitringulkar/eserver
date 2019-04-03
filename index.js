@@ -2,6 +2,9 @@ var express = require("express"),
 		bodyParser = require('body-parser'),
 		errorhandler = require('errorhandler');
 
+var swaggerUi = require('swagger-ui-express'),
+				swaggerDocument = require('./swagger.json');
+
 var config = require('./app/config');
 var isProduction = config.get('CONFIG_NODE_ENV') === true;
 console.log('Is running in production environment:', isProduction);
@@ -17,6 +20,7 @@ if (!isProduction) {
 
 var apiRouter = require('./app/api');
 
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use('/api', apiRouter);
 
 /// catch 404 and forward to error handler
