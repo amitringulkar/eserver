@@ -9,7 +9,7 @@ module.exports = {
 };
 
 function _validateUser(user, callback) {
-    if(user.getUsername() == 'undefinded' || user.getPassword() == 'undefined') {
+    if(user.getEmail() == 'undefinded' || user.getPassword() == 'undefined') {
         return callback({'message': 'Error in validation.', 'code': 401});
     }
     
@@ -18,7 +18,7 @@ function _validateUser(user, callback) {
             return callback({'message': 'Error in db connection.', 'code': 500});
         }
 
-        var sql = 'select id, username, firstname from users where username = "' + user.getUsername() + '" AND password = "' + user.getPassword() + '"';
+        var sql = 'select id, username, firstname from users where email = "' + user.getEmail() + '" AND password = "' + user.getPassword() + '"';
 
         connection.query(sql, function(err, result) {
             if(err) {
@@ -27,7 +27,7 @@ function _validateUser(user, callback) {
             if(utils.isEmpty(result)) {
                 return callback({'message': 'Invalid User.', 'code': 500}, result);
             }
-            return callback(null, result);
+            return callback(null, result[0]);
         });
     })
 }

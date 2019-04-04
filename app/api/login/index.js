@@ -17,8 +17,10 @@ function _login(req, res) {
 
 	userModel.validateUser(user, function(err, result) {
 		if(err) {
-			res.end('Invalid username/password.');
+            //res.end('Invalid username/password.');
+            res.end(err.message);
         }
+        user = _mapUserData(result);
         userModel.getUserByUsername(user, function(err, userUpdated) {
             if(err) {
                 res.end('Failed to load user.');
@@ -44,6 +46,15 @@ function _login(req, res) {
 function _mapRequestData(req) {
     var user = new User();
     user.setUsername(utils.getRequestParam(req, 'username'));
+    user.setEmail(utils.getRequestParam(req, 'email'));
     user.setPassword(utils.getRequestParam(req, 'password'));
+    return user;
+}
+
+function _mapUserData(res) {
+    var user = new User();
+    user.setUsername(utils.getParam(res, 'username'));
+    user.setEmail(utils.getParam(res, 'email'));
+    user.setPassword(utils.getParam(res, 'password'));
     return user;
 }
