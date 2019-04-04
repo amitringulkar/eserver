@@ -240,16 +240,18 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` varchar(100) NOT NULL,
   `firstname` varchar(100) NOT NULL,
-  `password` varchar(100) NOT NULL
+  `password` varchar(250) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `role` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `firstname`, `password`) VALUES
-(1, 'nilesh', 'Nilesh', 'nilesh.pawar@zensar.com'),
-(2, 'amit', 'Amit', 'amit.ingulkar@zensar.com');
+INSERT INTO `users` (`id`, `username`, `firstname`, `password`, `email`, `role`) VALUES
+(1, 'nilesh', 'Nilesh', 'test1', 'nilesh.pawar@zensar.com', 'PM'),
+(2, 'amit', 'Amit', 'test2', 'amit.ingulkar@zensar.com', 'PM');
 
 --
 -- Indexes for dumped tables
