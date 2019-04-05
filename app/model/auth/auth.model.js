@@ -44,7 +44,11 @@ function _validateToken(req, res, next) {
         next({'message': 'Invalid Payload', 'code': 401});
     }
 //console.log('_validateToken:', token);
+    try {
     var decodedToken = _verifyToken(token);
+    } catch (err) {
+        next({message: 'Failed to verify token', code: 500});
+    }
 //console.log('decodedToken:', decodedToken);
     var exp = utils.getParam(decodedToken, 'exp');
     var cDate = new Date();

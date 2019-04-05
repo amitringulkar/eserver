@@ -2,6 +2,8 @@ var express = require("express"),
 		bodyParser = require('body-parser'),
 		errorhandler = require('errorhandler');
 
+var errModel = require('./app/model/error/error.model');
+
 var swaggerUi = require('swagger-ui-express'),
 				swaggerDocument = require('./swagger.json');
 
@@ -35,25 +37,14 @@ app.use(function(req, res, next) {
 // will print stacktrace
 if (!isProduction) {
 	app.use(function(err, req, res, next) {
-		//console.log(err.stack);//ARI
-
-		res.status(err.status || 500);
-
-		res.json({'errors': {
-		message: err.message,
-		error: err
-		}});
+		errModel.sendError(res, err);
 	});
 }
   
 // production error handler
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
-res.status(err.status || 500);
-res.json({'errors': {
-	message: err.message,
-	error: {}
-}});
+	errModel.sendError(res, err);
 });
 
 var _closeServer = function() {

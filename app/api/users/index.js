@@ -1,6 +1,7 @@
 var express = require('express');
 
 var usersModel = require('../../model/user/index.model');
+var errModel = require('../../model/error/error.model');
 
 router = express.Router();
 
@@ -15,8 +16,9 @@ function _getUsers(req, res) {
 		if(err) {
 			//res.status(500);
 			//res.end('Failed to get users.');
-			res.status(err.code);
-			res.end(JSON.stringify(err));
+			//res.status(err.status);
+			//res.end(JSON.stringify(err));
+			errModel.sendError(res, err);
 		}
 		res.end(JSON.stringify(result));
 	});

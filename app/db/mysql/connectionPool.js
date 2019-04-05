@@ -18,7 +18,7 @@ function _getConnection(callback) {
             if(connection) {
                 connection.release();
             }
-            return callback({'message': 'Error in DB connection.', 'code': 100});
+            return callback({'message': 'Error in DB connection.', 'status': 100});
         }
         
         return callback(null, connection);
