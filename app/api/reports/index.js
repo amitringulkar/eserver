@@ -1,6 +1,7 @@
 var express = require('express');
 
 var usersModel = require('../../model/user/index.model');
+var errModel = require('../../model/error/error.model');
 
 router = express.Router();
 
@@ -13,7 +14,7 @@ function _getHeadCounts(req, res) {
 	//res.end(JSON.stringify(customers));
 	usersModel.getUsers(function(err, result) {
 		if(err) {
-			res.end('Failed to get users.');
+			errModel.sendError(res, err);
 		}
 		res.end(JSON.stringify(result));
 	});

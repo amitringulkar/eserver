@@ -4,6 +4,7 @@ var utils = require('../../utils');
 
 var userModel = require('../../model/user/index.model');
 var authModel = require('../../model/auth/auth.model');
+var errModel = require('../../model/error/error.model');
 var User = require('../../model/user/user.class');
 
 router = express.Router();
@@ -17,13 +18,12 @@ function _login(req, res) {
 
 	userModel.validateUser(user, function(err, result) {
 		if(err) {
-            //res.end('Invalid username/password.');
-            res.end(err.message);
+            errModel.sendError(res, err);
         }
         user = _mapUserData(result);
         userModel.getUserByUsername(user, function(err, userUpdated) {
             if(err) {
-                res.end('Failed to load user.');
+                errModel.sendError(res, err);
             }
 
             //generate token
