@@ -17,8 +17,7 @@ function _validateUser(user, callback) {
         if(err) {
             return callback({'message': 'Error in db connection.', 'status': 500});
         }
-
-        var sql = 'select id, username, firstname from users where email = "' + user.getEmail() + '" AND password = "' + user.getPassword() + '"';
+        var sql = 'select * from users where emailId = "' + user.getEmail() + '" AND password = "' + user.getPassword() + '"';
 
         connection.query(sql, function(err, result) {
             if(err) {
@@ -38,7 +37,7 @@ function _getUsers(callback) {
             return callback({'message': 'Failed to load users.', 'status': 500});
         }
 
-        var sql = 'select id, username, firstname from users';
+        var sql = 'select * from users';
 
         connection.query(sql, function(err, result) {
             if(err) {
@@ -59,7 +58,7 @@ function _getUserByUsername(user, callback) {
             return callback({'message': 'Error in db connection.', 'status': 500});
         }
 
-        var sql = 'select * from users where username = "' + user.getUsername() + '"';
+        var sql = 'select users.*, role.roleId, role.roleName from users JOIN role on role.roleId = users.roleId where username = "' + user.getUsername() + '"';
 
         connection.query(sql, function(err, result) {
             if(err) {

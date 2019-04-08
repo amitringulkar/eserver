@@ -15,7 +15,6 @@ module.exports = router;
 
 function _login(req, res) {
     var user = _mapRequestData(req);
-
 	userModel.validateUser(user, function(err, result) {
 		if(err) {
             errModel.sendError(res, err);
@@ -46,7 +45,7 @@ function _login(req, res) {
 function _mapRequestData(req) {
     var user = new User();
     user.setUsername(utils.getRequestParam(req, 'username'));
-    user.setEmail(utils.getRequestParam(req, 'email'));
+    user.setEmail(utils.getRequestParam(req, 'username')); // made use of username here for email
     user.setPassword(utils.getRequestParam(req, 'password'));
     return user;
 }
@@ -54,7 +53,7 @@ function _mapRequestData(req) {
 function _mapUserData(res) {
     var user = new User();
     user.setUsername(utils.getParam(res, 'username'));
-    user.setEmail(utils.getParam(res, 'email'));
+    user.setEmail(utils.getParam(res, 'emailId'));
     user.setPassword(utils.getParam(res, 'password'));
     return user;
 }

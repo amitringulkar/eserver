@@ -117,16 +117,17 @@ function _toAuthJSON(data){
 function _getTokenPayload(data) {
     return {
         username: utils.getParam(data, 'username'),
-        role: utils.getParam(data, 'role')
+        roleId: utils.getParam(data, 'roleId')
     };
 }
 
 function _getPayload(data) {
     return {
-        id: utils.getParam(data, 'id'),
+        id: utils.getParam(data, 'userId'),
         username: utils.getParam(data, 'username'),
-        email: utils.getParam(data, 'email'),
-        role: utils.getParam(data, 'role')
+        email: utils.getParam(data, 'emailId'),
+        roleId: utils.getParam(data, 'roleId'),
+        roleName: utils.getParam(data, 'roleName'),
     };
 }
 
@@ -135,8 +136,6 @@ function _mapData(req) {
 
     user.setUsername(utils.getParam(req, 'username'));
     user.setPassword(utils.getParam(req, 'password'));
-    //user.setEmail(utils.getParam(req, 'email'));
-    //user.setRole(utils.getParam(req, 'role'));
 
     return user;
 }
