@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 04, 2019 at 08:44 AM
+-- Generation Time: Apr 08, 2019 at 08:40 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.1.27
 
@@ -22,6 +22,21 @@ SET time_zone = "+00:00";
 -- Database: `land_and_expand`
 --
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `actionitems`
+--
+
+CREATE TABLE `actionitems` (
+  `actionItemsId` int(11) NOT NULL,
+  `userId` int(5) NOT NULL,
+  `description` varchar(50) NOT NULL,
+  `comments` varchar(250) NOT NULL,
+  `status` varchar(250) NOT NULL,
+  `startDate` datetime NOT NULL,
+  `endDate` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -196,10 +211,10 @@ INSERT INTO `srf` (`id`, `cancelled`, `closed`, `Offerd`, `0-2`, `2-4`, `4+`, `a
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Table structure for table `users`
 --
 
-CREATE TABLE `user` (
+CREATE TABLE `users` (
   `userId` int(11) NOT NULL,
   `roleId` int(2) DEFAULT NULL,
   `firstName` varchar(50) NOT NULL,
@@ -209,16 +224,16 @@ CREATE TABLE `user` (
   `description` varchar(100) NOT NULL,
   `username` varchar(25) NOT NULL,
   `allocation` int(3) NOT NULL,
-  `password` varchar(250) NOT NULL,
+  `password` varchar(100) NOT NULL,
   `managerId` int(10) NOT NULL,
   `active` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `user`
+-- Dumping data for table `users`
 --
 
-INSERT INTO `user` (`userId`, `roleId`, `firstName`, `middleName`, `lastName`, `emailId`, `description`, `username`, `allocation`, `password`, `managerId`, `active`) VALUES
+INSERT INTO `users` (`userId`, `roleId`, `firstName`, `middleName`, `lastName`, `emailId`, `description`, `username`, `allocation`, `password`, `managerId`, `active`) VALUES
 (1, 1, 'Prameela', '', 'K', 'prameela.k@zensar.com', 'ADC - need to update', 'PK0001', 0, 'prameela123', 0, 1),
 (2, 2, 'Raju', '', 'Hari', 'Raju.H@zensar.com', 'ADC - Need to check', 'RH0002', 0, 'Raju123', 1, 1),
 (3, 3, 'Niraj', '', 'N', 'Niraj.N@zensar.com', 'Derivco ODC', 'NN0003', 0, 'NirajN123', 2, 1),
@@ -233,30 +248,15 @@ INSERT INTO `user` (`userId`, `roleId`, `firstName`, `middleName`, `lastName`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
---
-
-CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
-  `username` varchar(100) NOT NULL,
-  `firstname` varchar(100) NOT NULL,
-  `password` varchar(250) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `role` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `username`, `firstname`, `password`, `email`, `role`) VALUES
-(1, 'nilesh', 'Nilesh', 'test1', 'nilesh.pawar@zensar.com', 'PM'),
-(2, 'amit', 'Amit', 'test2', 'amit.ingulkar@zensar.com', 'PM');
-
---
 -- Indexes for dumped tables
 --
 
+--
+-- Indexes for table `actionitems`
+--
+ALTER TABLE `actionitems`
+  ADD PRIMARY KEY (`actionItemsId`),
+  ADD KEY `actionItems_fk0` (`userId`);
 
 --
 -- Indexes for table `headcount`
@@ -292,21 +292,21 @@ ALTER TABLE `srf`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user`
+-- Indexes for table `users`
 --
-ALTER TABLE `user`
+ALTER TABLE `users`
   ADD PRIMARY KEY (`userId`),
   ADD KEY `User_fk0` (`roleId`);
 
 --
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `actionitems`
+--
+ALTER TABLE `actionitems`
+  MODIFY `actionItemsId` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `headcount`
@@ -339,39 +339,38 @@ ALTER TABLE `srf`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `user`
---
-ALTER TABLE `user`
-  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables
 --
 
+--
+-- Constraints for table `actionitems`
+--
+ALTER TABLE `actionitems`
+  ADD CONSTRAINT `ActionItems_fk0` FOREIGN KEY (`userId`) REFERENCES `users` (`userId`);
 
 --
 -- Constraints for table `headcount`
 --
 ALTER TABLE `headcount`
-  ADD CONSTRAINT `HeadCount_fk0` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`);
+  ADD CONSTRAINT `HeadCount_fk0` FOREIGN KEY (`userId`) REFERENCES `users` (`userId`);
 
 --
 -- Constraints for table `monthheadcount`
 --
 ALTER TABLE `monthheadcount`
-  ADD CONSTRAINT `MonthHeadCount_fk0` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`);
+  ADD CONSTRAINT `MonthHeadCount_fk0` FOREIGN KEY (`userId`) REFERENCES `users` (`userId`);
 
 --
 -- Constraints for table `revenue`
 --
 ALTER TABLE `revenue`
-  ADD CONSTRAINT `Revenue_fk0` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`);
+  ADD CONSTRAINT `Revenue_fk0` FOREIGN KEY (`userId`) REFERENCES `users` (`userId`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
