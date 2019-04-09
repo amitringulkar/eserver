@@ -45,7 +45,7 @@ function _login(req, res) {
 function _mapRequestData(req) {
     var user = new User();
     user.setUsername(utils.getRequestParam(req, 'username'));
-    user.setEmail(utils.getRequestParam(req, 'username')); // made use of username here for email
+    user.setEmail(utils.getRequestParam(req, 'email'));
     user.setPassword(utils.getRequestParam(req, 'password'));
     return user;
 }

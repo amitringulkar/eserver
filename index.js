@@ -4,6 +4,8 @@ var express = require("express"),
 
 var errModel = require('./app/model/error/error.model');
 
+const cors = require('cors');
+const helmet = require('helmet');
 var swaggerUi = require('swagger-ui-express'),
 				swaggerDocument = require('./swagger.json');
 
@@ -15,6 +17,12 @@ var app = express();
 // Normal express config defaults
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+// secure apps by setting various HTTP headers
+app.use(helmet());
+
+// enable CORS - Cross Origin Resource Sharing
+app.use(cors());
 
 if (!isProduction) {
 	app.use(errorhandler());
