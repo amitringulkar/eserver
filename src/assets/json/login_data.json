@@ -1,0 +1,16 @@
+{
+    "user":[
+        {
+            "user_id":101,
+            "user_name":"Bharti15",
+            "password":"Bharti15",
+            "eamil":"bharti.b@zensar.com"
+        },
+        {
+            "user_id":102,
+            "user_name":"admin15",
+            "password":"Admin15",
+            "eamil":"admin@zensar.com"
+        }
+    ]
+}

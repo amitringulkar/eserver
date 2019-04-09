@@ -1,0 +1,48 @@
+
+
+.error-message
+{
+  color: var(--red);
+  font-size: 14px;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+.submit-btn {
+  margin-top: 40px;
+  background:var(--skyBlue);
+  color: var(--white);
+  font-weight: bolder;
+  cursor: pointer;
+}
+.logo-size{
+  width: 100%;
+  height: 100px;
+}
+.login-row {
+  margin-top: 25%;
+  text-align: center;
+}
+.input-label{
+  margin-top: 15px;
+  position: absolute;
+  font-size: 19px;
+  margin-left: 6px;
+  font-weight: 500;
+  color:var(--skyBlue);
+}
+.icon-image{
+  margin-bottom: -10px;
+  width: 42px;
+  height: 50px;
+  }
+  .item-highlight, .item-inner-highlight {
+    background:  var(--skyBlue);
+}
+.toolbar-background {
+  background: var(--lightskyBlue) ;
+  text-align: center;
+  color: var(--skyBlue);
+  padding: 8px;
+  font-weight: bolder;
+}
+

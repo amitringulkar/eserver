@@ -1,0 +1,70 @@
+.row1 {
+   // background: url(../assets/5.jpg);
+    background-repeat: repeat;  
+    color: var(--black);
+    font-weight: 600;
+    height: 150px;
+     box-shadow: -2px 8px 13px -4px  grey;
+    background-position: top;
+    background-size: cover;
+    padding-top: 10px;
+}
+.profilePic {
+    margin-top: 18px;
+    margin-left: 24px;
+}
+.userName {
+    margin-top: 5.3rem;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: -8px;
+}
+  .sub-items {
+    --background: #f4f5f8;
+    --padding-start: 29px;
+    --background-activated: var(--white);
+    --min-height: 36px;
+    --background-focused: var(--white);
+    box-shadow: 3px 2px 2px 0px #8080808c;
+  }
+  .icon-inner, svg , .item-detail-icon{
+    display: none !important;
+  }
+  .splash{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index:999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--white);
+  }
+  .spinner{
+    width: 22vw;
+    height: 22vw;
+    background-image:url('../assets/landExpand_logo.png');
+    // margin :50px auto ;
+    -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
+    animation: sk-rotateplane 1.2s infinite ease-in-out;
+  }
+  @-webkit-keyframes sk-rotateplane{
+    0%{-webkit-transform: perspective(120px)}
+    50%{-webkit-transform: perspective(120px)rotateY(180deg)}
+    100%{-webkit-transform: perspective(120px)rotateY(180deg)rotateX(180deg)}
+  }
+
+  @keyframes sk-rotateplane{
+    0%{
+      transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+      -webkit-transform: perspective(120px)rotateX(0deg) rotateY(0deg)
+    }
+    50%{
+      transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+      -webkit-transform: perspective(120px)rotateX(-180.1deg) rotateY(0deg)
+    }
+    100%{
+      transform: perspective(120px) rotateX(-800deg) rotateY(-179.9deg);
+      -webkit-transform: perspective(120px)rotateX(-180deg) rotateY(-179.9deg)
+    }
+  }

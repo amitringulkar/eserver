@@ -1,0 +1,82 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+      <ion-title>Revenue</ion-title>
+    </ion-toolbar>
+
+    <ion-segment style="background-color:#eaf5ff"scrollable class="subHeader" [(ngModel)]="page">
+      <ion-segment-button checked value="0" (click)="selectedTab(0)">
+          <!-- <ion-icon name="heart"></ion-icon> -->
+        <ion-label>Overall Revenue</ion-label>
+        </ion-segment-button>
+        
+        <ion-segment-button  value="1" (click)="selectedTab(1)">
+          <ion-label>Yearly Revenue</ion-label>
+        </ion-segment-button>
+        
+  </ion-segment>
+  </ion-header>
+  
+  <ion-content padding>
+
+      <!-- <p>Home Page here</p> -->
+  
+     <ion-card style="margin-top:50px">
+      <ion-slides #slider (ionSlideWillChange)="segmentChanged()" [pager]="false">
+        <ion-slide value="0">
+            <!-- <ion-item>
+                <ion-label>Gender</ion-label>
+                <ion-select [(ngModel)]="gender">
+                  <ion-option value="f" selected="true">Female</ion-option>
+                  <ion-option value="m">Male</ion-option>
+                </ion-select>
+              </ion-item> -->
+            <canvas id="barChart_OverallRev" style="position: relative; height:60vh; width:80vw;"></canvas>
+        </ion-slide>
+        <ion-slide value="1">
+
+          <!-- Radio Button -->
+          <!-- <ion-row>
+            <ion-col>
+              <ion-list>
+                  <ion-radio-group>
+                    <ion-list-header>
+                      <ion-label>Yearly Wise</ion-label>
+                    </ion-list-header>
+                
+                    <ion-item>
+                      <ion-label>FY19</ion-label>
+                      <ion-radio slot="start" value="biff" checked></ion-radio>
+                    </ion-item>
+                
+                    <ion-item>
+                      <ion-label>FY20</ion-label>
+                      <ion-radio slot="start" value="griff"></ion-radio>
+                    </ion-item>
+                
+                    <ion-item>
+                      <ion-label>FY21</ion-label>
+                      <ion-radio slot="start" value="buford"></ion-radio>
+                    </ion-item>
+                  </ion-radio-group>
+                </ion-list>
+          </ion-col>  
+          </ion-row> -->
+          <!-- End  -->
+        
+           
+                <canvas id="barChart_YearlyRev" style="position: relative; height:60vh; width:80vw;"></canvas>
+          
+           
+        </ion-slide>
+        
+      </ion-slides>
+     
+          <!-- <canvas id="barChart_OverallRev" style="height: 60vw; width: 40vw;"></canvas> -->
+        
+  
+        </ion-card>
+    </ion-content>
+  

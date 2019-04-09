@@ -1,0 +1,71 @@
+<ion-app>
+  <!-- Splash Screen  -->
+  <!-- <ion-row *ngIf='showSplash' class='splash'>
+    <ion-row>
+        <ion-col class='spinner'></ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col><h1 class="header">Land & Expand</h1></ion-col>
+    </ion-row>
+   
+  </ion-row> -->
+  <!-- End  -->
+  <ion-split-pane>
+    <ion-menu>
+      <ion-header>
+        <ion-row class="row1" style="padding-top:15px;">
+          <ion-col col-4 text-left>
+            <img class="profilePic" src="assets/derivco.png" />
+          </ion-col>
+          <!-- <ion-col col-7 text-left>
+                  <p class="userName">Admin</p>
+                  
+                  p>Steering Committee Member</p
+              </ion-col> -->
+        </ion-row>
+      </ion-header>
+
+      <ion-content> 
+          <div *ngFor="let pages of appPages">
+            
+            <ion-menu-toggle *ngIf="pages.url">
+              <ion-item [routerLink]="pages.url" routerDirection="root" routerLinkActive="active">
+                <ion-icon [name]="pages.icon" slot="start"></ion-icon>
+              <ion-label>
+                {{ pages.title }}
+              </ion-label>
+             </ion-item>
+              </ion-menu-toggle>
+              <ion-item button *ngIf="pages.submenu?.length > 0" (click)="pages.open = !pages.open" [class.parent-active]="pages.open" detail="false">
+                <ion-icon [name]="pages.icon" slot="start"></ion-icon>
+                <ion-label>{{ pages.title }}</ion-label>
+                <ion-icon slot="end" name="add" *ngIf="!pages.open"></ion-icon>
+                <ion-icon slot="end" name="remove" *ngIf="pages.open"></ion-icon>
+                
+              </ion-item>
+
+            <ion-menu-toggle  *ngIf="pages.open">
+              <ion-item *ngFor="let submenu of pages.submenu" class="sub-items" [routerLink]="submenu.url" routerDirection="root"
+              routerLinkActive="active">
+                <ion-label>
+                  {{ submenu.title }}
+                </ion-label>
+              </ion-item>
+            </ion-menu-toggle>
+            
+          </div>
+         
+            
+              <ion-menu-toggle>
+              <ion-item (click)="doLogout()">
+              <ion-icon name="sync" slot="start"></ion-icon>
+              <ion-label>
+                Logout
+              </ion-label>
+            </ion-item> 
+           </ion-menu-toggle>
+          </ion-content>
+    </ion-menu>
+    <ion-router-outlet main></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

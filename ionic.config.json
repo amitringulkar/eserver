@@ -1,0 +1,7 @@
+{
+  "name": "Derivco – Land and Expand",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

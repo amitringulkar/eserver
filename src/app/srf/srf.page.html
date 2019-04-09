@@ -1,0 +1,37 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+      <ion-title>SRF Summary</ion-title>
+    </ion-toolbar>
+    <!-- Tab Bar -->
+    <!-- (ionChange)="segmentChanged($event)" -->
+    
+    <ion-segment style="background-color:#eaf5ff" class="subHedaer"  [(ngModel)]="page" scrollable>
+        <ion-segment-button value="0" (click)="selectedTab(0)">
+            <ion-label>Overall</ion-label>
+          </ion-segment-button>
+          <ion-segment-button   value="1" (click)="selectedTab(1)">
+            <ion-label>Open SRFs</ion-label>
+          </ion-segment-button>
+          <ion-segment-button  value="2" (click)="selectedTab(2)">
+            <ion-label>Active SRFs</ion-label>
+          </ion-segment-button>
+    </ion-segment>
+  
+    <!-- tab Ends -->
+  </ion-header>
+  <ion-content padding>
+    <ion-slides #slider (ionSlideWillChange)="segmentChanged($event)" [pager]="false">
+        
+        <ion-slide>
+            <canvas id="open" style="position: relative; height:60vh; width:80vw;"></canvas>
+        </ion-slide>
+        <ion-slide >
+            <canvas id="active" style="position: relative; height:60vh; width:80vw;"></canvas>
+        </ion-slide>
+      </ion-slides>
+
+      
+    </ion-content>
