@@ -15,8 +15,11 @@
     "express": "^4.14.0",
     "helmet": "^3.16.0",
     "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.9.1",
     "mysql": "^2.11.1",
     "nodemon": "^1.10.2",
+    "path": "^0.12.7",
+    "rotating-file-stream": "^1.4.0",
     "swagger-ui-express": "^4.0.2"
   },
   "description": "Rest API Server"

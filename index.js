@@ -6,6 +6,9 @@ var errModel = require('./app/model/error/error.model');
 
 const cors = require('cors');
 const helmet = require('helmet');
+const morgan = require('morgan');
+var path = require('path');
+var rfs = require('rotating-file-stream');
 var swaggerUi = require('swagger-ui-express'),
 				swaggerDocument = require('./swagger.json');
 
@@ -27,6 +30,15 @@ app.use(cors());
 if (!isProduction) {
 	app.use(errorhandler());
 }
+
+// create a rotating write stream
+var accessLogStream = rfs('access.log', {
+	interval: '1d', // rotate daily
+	path: path.join(__dirname, 'log')
+});
+
+// setup the logger
+app.use(morgan('combined', { stream: accessLogStream }));
 
 var apiRouter = require('./app/api');
 
