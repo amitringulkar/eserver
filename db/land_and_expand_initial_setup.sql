@@ -376,3 +376,102 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gamechanger_cost`
+--
+
+CREATE TABLE `gamechanger_cost` (
+  `id` int(5) NOT NULL,
+  `gamename` varchar(250) NOT NULL,
+  `planned_cost` float NOT NULL,
+  `ideal_actual_cost` float NOT NULL,
+  `actual_cost` float NOT NULL,
+  `status` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `gamechanger_cost`
+--
+
+INSERT INTO `gamechanger_cost` (`id`, `gamename`, `planned_cost`, `ideal_actual_cost`, `actual_cost`, `status`) VALUES
+(1, 'Mermaid Millions', 1087, 932, 1043, 1),
+(2, 'Major Millions', 928, 833, 831, 1),
+(3, 'Break de bank again', 702, 609, 977, 1),
+(4, 'Wrap Up', 70, 0, 279, 2),
+(5, 'Console', 284, 284, 246, 1),
+(6, 'Game of thrones', 966, 932, 907, 3),
+(7, 'Mega Moolah', 727, 527, 480, 1),
+(8, 'CrickterStar', 143, 110, 108, 1),
+(9, 'Dragon Dance', 742, 523, 504, 3);
+
+--
+-- Indexes for table `gamechanger_cost`
+--
+ALTER TABLE `gamechanger_cost`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for table `gamechanger_cost`
+--
+ALTER TABLE `gamechanger_cost`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+COMMIT;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `portfolio_cost`
+--
+
+CREATE TABLE `portfolio_cost` (
+  `id` int(5) NOT NULL,
+  `tracks` varchar(250) NOT NULL,
+  `status` int(2) NOT NULL,
+  `dev_cost` float NOT NULL,
+  `dev_efforts` float NOT NULL,
+  `devQA_cost` float NOT NULL,
+  `devQA_efforts` float NOT NULL,
+  `pc_cost` float NOT NULL,
+  `pc_efforts` float NOT NULL,
+  `pm_cost` float NOT NULL,
+  `pm_efforts` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `portfolio_cost`
+--
+
+INSERT INTO `portfolio_cost` (`id`, `tracks`, `status`, `dev_cost`, `dev_efforts`, `devQA_cost`, `devQA_efforts`, `pc_cost`, `pc_efforts`, `pm_cost`, `pm_efforts`) VALUES
+(1, 'Common_Portfolio_Tasks', 0, 40750, 163, 0, 0, 0, 0, 0, 0),
+(2, 'Feature Work', 0, 0, 0, 0, 0, 2475, 9, 5040, 16),
+(3, 'Feature Work - Durban', 0, 32500, 130, 0, 0, 0, 0, 0, 0),
+(4, 'Jira Fixes - Mar 2019', 0, 14875, 59.5, 0, 0, 0, 0, 0, 0),
+(5, 'Lucky Leprechaun: Free Game', 0, 2750, 11, 0, 0, 0, 0, 0, 0),
+(6, 'Lucky Leprechaun: Free Game + Bet Slider', 0, 2000, 8, 0, 0, 0, 0, 0, 0),
+(7, 'Lucky Leprechaun: Ultimate Console', 0, 9375, 37.5, 0, 0, 0, 0, 0, 0),
+(8, 'Maintenance and Support Work', 0, 0, 0, 0, 0, 4950, 18, 3780, 12),
+(9, 'Lucky Leprechaun: Ultimate Console', 0, 0, 0, 0, 0, 2475, 9, 5355, 17),
+(10, 'PokerStar-Batch2', 0, 500, 2, 0, 0, 0, 0, 0, 0),
+(11, 'Portfolio', 0, 27375, 109.5, 0, 0, 0, 0, 0, 0),
+(12, 'Portfolio-DevQA', 0, 0, 0, 26500, 106, 0, 0, 0, 0),
+(13, 'Sweden- Game name, iFrame & Show balance', 0, 18000, 72, 21400, 85.6, 0, 0, 0, 0),
+(14, 'Sweden topbar balance', 0, 20500, 82, 0, 0, 0, 0, 0, 0),
+(15, 'Ultimate Console', 0, 16625, 66.5, 6000, 24, 0, 0, 0, 0),
+(16, 'Yen Fixes', 0, 14250, 57, 2250, 9, 0, 0, 0, 0),
+(17, 'Yen Fixes DEV QA', 0, 0, 0, 9000, 36, 0, 0, 0, 0);
+
+--
+-- Indexes for table `portfolio_cost`
+--
+ALTER TABLE `portfolio_cost`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for table `portfolio_cost`
+--
+ALTER TABLE `portfolio_cost`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+COMMIT;

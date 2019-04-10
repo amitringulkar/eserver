@@ -10,6 +10,7 @@ router = express.Router();
 router.post('/srf', _getSrf);
 router.post('/headcount', _getHeadCount);
 router.post('/revenue', _getRevenue);
+router.post('/portfolio', _getPortfolioCost);
 
 module.exports = router;
 
@@ -44,6 +45,16 @@ function _getRevenue(req, res) {
 		if(err) {
 			//res.end(err.message);
 			errModel.sendError(res, err);
+		}
+		res.end(JSON.stringify(result));
+	});
+}
+
+function _getPortfolioCost(req, res) {
+
+	reportModel.getPortfolioCost(function(err, result) {
+		if(err) {
+			res.end(err.message);
 		}
 		res.end(JSON.stringify(result));
 	});

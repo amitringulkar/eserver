@@ -6,7 +6,8 @@ module.exports = {
     validateUser: _validateUser,
     getSrf: _getSrf,
     getHeadCount: _getHeadCount,
-    getRevenue: _getRevenue
+    getRevenue: _getRevenue,
+    getPortfolioCost: _getPortfolioCost
 };
 
 
@@ -83,6 +84,23 @@ function _getRevenue(userId, callback) {
         }
 
         var sql = "select revenue.userId AS Id, firstName, lastName ,year, quarter, revenueOnsite , revenueoffshore , actual   from revenue JOIN users On users.userId = revenue.userId where revenue.userId In ( select userId from (select * from users order by managerId , userId) products_sorted, (select @pv := "+userId+") initialisation where find_in_set(managerId , @pv) and length(@pv := concat(@pv, ',', userId)) ) ";
+
+        connection.query(sql, function(err, result) {
+            if(err) {
+                return callback(err);
+            }
+            return callback(null, result);
+        });
+    });
+}
+
+function _getPortfolioCost(callback) {
+    pool.getConnection(function(err, connection){
+        if(err) {
+            return callback({'message': 'Failed to load users.', 'code': 500});
+        }
+
+        var sql = "SELECT *, ( `dev_cost` + `devQA_cost` + `pc_cost` + `pm_cost`) AS total FROM `portfolio_cost` ";
 
         connection.query(sql, function(err, result) {
             if(err) {

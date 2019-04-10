@@ -16,7 +16,7 @@ var router = express.Router();
 router.use('/login', loginRouter);
 router.use('/service', serviceRouter);
 router.use('/users', authModel.isAuthenticated, usersRouter);
-router.use('/reports', authModel.validateToken, reportsRouter);
+router.use('/reports', reportsRouter); // authModel.validateToken
 
 router.get('/', function(req, res){
 	res.send('/api is running...');
