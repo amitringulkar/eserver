@@ -7,7 +7,8 @@ module.exports = {
     getSrf: _getSrf,
     getHeadCount: _getHeadCount,
     getRevenue: _getRevenue,
-    getPortfolioCost: _getPortfolioCost
+    getPortfolioCost: _getPortfolioCost,
+    getGameChangerCost: _getGameChangerCost
 };
 
 
@@ -101,6 +102,23 @@ function _getPortfolioCost(callback) {
         }
 
         var sql = "SELECT *, ( `dev_cost` + `devQA_cost` + `pc_cost` + `pm_cost`) AS total FROM `portfolio_cost` ";
+
+        connection.query(sql, function(err, result) {
+            if(err) {
+                return callback(err);
+            }
+            return callback(null, result);
+        });
+    });
+}
+
+function _getGameChangerCost(callback) {
+    pool.getConnection(function(err, connection){
+        if(err) {
+            return callback({'message': 'Failed to load users.', 'code': 500});
+        }
+
+        var sql = "SELECT * FROM `gamechanger_cost` ";
 
         connection.query(sql, function(err, result) {
             if(err) {
