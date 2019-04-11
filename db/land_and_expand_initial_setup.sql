@@ -475,3 +475,33 @@ ALTER TABLE `portfolio_cost`
 ALTER TABLE `portfolio_cost`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 COMMIT;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `testing_cost`
+--
+
+CREATE TABLE `testing_cost` (
+  `id` int(5) NOT NULL,
+  `gamename` varchar(250) NOT NULL,
+  `planned_cost` float NOT NULL,
+  `actual_cost` float NOT NULL,
+  `status` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `testing_cost`
+--
+
+INSERT INTO `testing_cost` (`id`, `gamename`, `planned_cost`, `actual_cost`, `status`) VALUES
+(1, 'Mermaid Millions', 1087, 1043, 1),
+(2, 'Major Millions', 928, 831, 1),
+(3, 'Break de bank again', 702, 977, 1),
+(4, 'Wrap Up', 70, 279, 2),
+(5, 'Console', 284, 246, 1),
+(6, 'Game of thrones', 966, 907, 3),
+(7, 'Mega Moolah', 727, 480, 1),
+(8, 'CrickterStar', 143, 108, 1),
+(9, 'Dragon Dance', 742, 504, 3);
+COMMIT;

@@ -8,7 +8,8 @@ module.exports = {
     getHeadCount: _getHeadCount,
     getRevenue: _getRevenue,
     getPortfolioCost: _getPortfolioCost,
-    getGameChangerCost: _getGameChangerCost
+    getGameChangerCost: _getGameChangerCost,
+    getTesting: _getTesting
 };
 
 
@@ -119,6 +120,23 @@ function _getGameChangerCost(callback) {
         }
 
         var sql = "SELECT * FROM `gamechanger_cost` ";
+
+        connection.query(sql, function(err, result) {
+            if(err) {
+                return callback(err);
+            }
+            return callback(null, result);
+        });
+    });
+}
+
+function _getTesting(callback) {
+    pool.getConnection(function(err, connection){
+        if(err) {
+            return callback({'message': 'Failed to load users.', 'code': 500});
+        }
+
+        var sql = "SELECT * FROM `testing_cost` ";
 
         connection.query(sql, function(err, result) {
             if(err) {

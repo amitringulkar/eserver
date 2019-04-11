@@ -12,6 +12,7 @@ router.post('/headcount', _getHeadCount);
 router.post('/revenue', _getRevenue);
 router.post('/portfolio', _getPortfolioCost);
 router.post('/gamechanger', _getGameChangerCost);
+router.post('/testing', _getTesting);
 
 module.exports = router;
 
@@ -64,6 +65,16 @@ function _getPortfolioCost(req, res) {
 function _getGameChangerCost(req, res) {
 
 	reportModel.getGameChangerCost(function(err, result) {
+		if(err) {
+			res.end(err.message);
+		}
+		res.end(JSON.stringify(result));
+	});
+}
+
+function _getTesting(req, res) {
+
+	reportModel.getTesting(function(err, result) {
 		if(err) {
 			res.end(err.message);
 		}
