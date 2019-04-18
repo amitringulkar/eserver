@@ -1,4 +1,6 @@
 var express = require("express"),
+		fs = require('fs'),
+		https = require('https'),
 		bodyParser = require('body-parser'),
 		errorhandler = require('errorhandler');
 
@@ -75,6 +77,11 @@ var _closeServer = function() {
 process.on('exit', _closeServer);
 
 // finally, let's start our server...
-var server = app.listen(config.get('CONFIG_SERVER_PORT', 4040), function(req, res) {
+const httpsOptions = {
+	key: fs.readFileSync('security/70458813_landandexpand.dev.com.key'),
+	cert: fs.readFileSync('security/70458813_landandexpand.dev.com.cert')
+};
+var server = https.createServer(httpsOptions, app)
+  .listen(config.get('CONFIG_SERVER_PORT', 443), function(req, res) {
 	console.log('app server is running on port ' + server.address().port);
 });
